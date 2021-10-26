@@ -21,7 +21,7 @@ while result is None:
     try:
         # connect
         with pysftp.Connection(host=myHostname, username=myUsername, password=myPassword) as sftp:
-            print("Connection succesfully stablished ... ")
+            print("Connection succesfully established ... ")
             sftp.cwd(remote_path)
             for f in sftp.listdir_attr():
                 if not stat.S_ISDIR(f.st_mode):

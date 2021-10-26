@@ -69,16 +69,7 @@ df_ts.available.fillna(df_unit_a_l_CTA.InstalledCapacity.max(), inplace=True)
 eq = EnergyQuantified(api_key='0168d6-b068b6-f41124-7108d3')
 
 # Free-text search (filtering on attributes is also supported)
-# curves = eq.metadata.curves(q='de wind production actual')
-# curves = eq.metadata.curves(q='de wind production')
 curves = eq.metadata.curves(q='FR @Fessenheim-2 Nuclear Capacity Available MW REMIT')
-# capacity_curves = eq.metadata.curves(q='DE Wind Power Installed MW Capacity')
-# curves = eq.metadata.curves(q=['DE Wind Power Production MWh/h 15min Climate','DE Wind Power Installed MW Capacity'])
-# curves = eq.metadata.curves(
-#    area='DE',
-#    data_type='FORECAST',
-#    category=['nuclear', 'production']
-# )
 
 # Load time series data
 curve = curves[0]
