@@ -4,12 +4,17 @@ Created on Fri Oct 22 17:01:00 2021
 
 @author: Diego.Marquina
 """
-
+#%%
 import pandas as pd
 import glob
+from plotly.offline import init_notebook_mode, iplot
+from plotly.graph_objs import *
+from plotly.subplots import make_subplots
+init_notebook_mode(connected=True) 
+pd.options.plotting.backend = "plotly"
 
 #%%
-path = r'C:\Users\diego.marquina\OneDrive - Shell\Documents\FTP\UnavailabilityOfGenerationUnits_15.1.A_B' # use your path
+path = r'./entsoe/UnavailabilityOfGenerationUnits_15.1.A_B' # use your path
 all_files = glob.glob(path + "/*.csv")
 
 li = []
@@ -46,3 +51,7 @@ for index, row in df_flam_a_l_CTA.iterrows():
 new_df = new_df.loc[~new_df.index.duplicated(keep='last')]
 new_df = new_df.resample('h').fillna('backfill')
 new_df.available.fillna(df_flam_a_l_CTA.InstalledCapacity.max(), inplace=True)
+
+# %%
+new_df.available.plot()
+# %%
