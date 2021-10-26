@@ -25,7 +25,7 @@ while result is None:
             sftp.cwd(remote_path)
             for f in sftp.listdir_attr():
                 if not stat.S_ISDIR(f.st_mode):
-                    print("Checking %s..." % f.filename)
+                    # print("Checking %s..." % f.filename)
                     local_file_path = os.path.join(local_path, f.filename)
                     if ((not os.path.isfile(local_file_path)) or
                         (f.st_mtime > os.path.getmtime(local_file_path))):
