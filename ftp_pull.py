@@ -34,7 +34,8 @@ while result is None:
         result = 'done'
         print(result)
     except:
-         pass
+        print('connection lost, retrying')
+        pass
 
     # # Switch to a remote directory
     # sftp.cwd('/TP_export/UnavailabilityOfGenerationUnits_15.1.A_B')
